@@ -1,0 +1,138 @@
+@mixin size_100 {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:host {
+  @include size_100;
+}
+
+.dashboard {
+  @include size_100;
+  border: 1px solid #e9e9e9;
+  border-radius: .7vw;
+  background-color: #f0eded;
+  ;
+  transition: box-shadow .3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 7px 7px rgba(106, 106, 106, 0.25), 0 10px 10px rgba(121, 121, 121, 0.22);
+  }
+}
+
+
+.header,
+.body {
+  width: 100%;
+
+  .header-row,
+  .body-columns {
+    height: 100%;
+    @include flex;
+  }
+
+  .cell,
+  .column {
+    width: 33%;
+    flex-basis: 100%;
+    @include flex;
+  }
+}
+
+.control-panel {
+  @include flex;
+  height: 15%;
+  border-bottom: 1px solid #DFDFDF;
+  padding: 1vw;
+  justify-content: flex-start;
+
+  .add-button {
+    height: var(--button-height);
+    padding-left: 1vw;
+    background-color: var(--turquoise);
+    color: white;
+
+    .add-icon {
+      margin-right: 1.5vw;
+    }
+  }
+}
+
+.header {
+  height: 7%;
+  border-bottom: 1px solid #DFDFDF;
+
+  .cell {
+    height: 100%;
+  }
+
+  .cell:not(:last-child) {
+    border-right: 1px solid #DFDFDF;
+  }
+}
+
+.body {
+  height: 78%;
+
+  .body-columns {
+    .column {
+      align-items: flex-start;
+      height: 100%;
+      padding: 6px;
+
+      .column-ul {
+        @include flex;
+        height: 100%;
+        width: 100%;
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+        .card {
+          margin-bottom: 6px;
+          width: 48%;
+
+          &:nth-child(odd) {
+            margin-right: 6px;
+          }
+        }
+      }
+    }
+
+    .column:not(:last-child) {
+      border-right: 1px solid #DFDFDF;
+    }
+  }
+}
+
+.card {
+  margin-bottom: 6px;
+  width: 48%;
+
+  &:nth-child(odd) {
+    margin-right: 6px;
+  }
+}
+
+:host ::ng-deep {
+  .ng-scroll-content {
+    height: 98%;
+  }
+
+  .ng-scrollbar {
+    width: 100%;
+  }
+}
+
+.list-wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+}

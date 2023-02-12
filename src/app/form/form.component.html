@@ -1,0 +1,55 @@
+<div class="form-window size_100">
+  <div class="header flex-centred">
+    <p class="title">Новая задача</p>
+    <button (click)="close()" class="close flex-centred">
+      <mat-icon class="flex-centred">
+        <svg class="svg-close flex-centred" width="17" height="17" viewBox="0 0 17 17" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.5 0.5L16 16" stroke="black" />
+          <path d="M0.5 16L16 0.499999" stroke="black" />
+        </svg>
+      </mat-icon>
+    </button>
+  </div>
+  <div class="body">
+    <form class="form" [formGroup]="formState">
+      <label class="label" for="name">
+        Наименование
+      </label>
+      <div class="form-input-wrap">
+        <input maxlength="64" #name formControlName="name"
+          [class.red-border]="formState.get('name')?.hasError('required') && isButtonPressed" placeholder="Наименование"
+          class="form-input input" id="name" matInput>
+        <div class="input-symbols">{{formState.get('name')?.value?.length || 0}}/64</div>
+      </div>
+      <label class="label" for="description">
+        Описание
+      </label>
+      <textarea maxlength="256"
+        [class.red-border]="formState.get('description')?.hasError('required') && isButtonPressed"
+        formControlName="description" placeholder="Описание" class="form-input textarea" id="description"
+        matInput></textarea>
+      <label class="label" for="status">
+        Состояние задачи
+      </label>
+      <select class="custom-select select" formControlName="status" id="status">
+        <option [disabled]="task?.status === 'process'" class="option" value="new">Новая</option>
+        <option [disabled]="mode === 'create'" class="option" value="process">Выполняется</option>
+        <option [disabled]="task?.status === 'new' || mode === 'create'" class="option" value="done">Готово</option>
+      </select>
+    </form>
+    <div class="buttons flex-centred" *ngIf="mode==='create' || mode==='edit'">
+      <button class="cancel-button" (click)="cancel()" extended mat-fab>
+        Отмена
+      </button>
+      <button class="save-button" (click)="save()" extended mat-fab>
+        Сохранить
+      </button>
+    </div>
+    <div class="buttons flex-centred" *ngIf="mode==='watch'">
+      <button class="save-button" (click)="cancel()" extended mat-fab>
+        Закрыть
+      </button>
+    </div>
+  </div>
+</div>

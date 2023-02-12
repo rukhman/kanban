@@ -1,0 +1,131 @@
+.form-window {
+  background-color: white;
+  overflow: hidden;
+}
+
+.header {
+  height: 12%;
+  width: 100%;
+  justify-content: flex-end;
+  background-color: var(--yellow);
+  padding-right: 3vh;
+  padding-left: 3vh;
+}
+
+.close {
+  height: 100%;
+  width: 28px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.svg-close {
+  width: 2vh;
+}
+
+.mat-icon {
+  display: flex;
+}
+
+.title {
+  margin-right: auto;
+}
+
+.body {
+  height: 88%;
+  padding-right: 3vh;
+  padding-left: 3vh;
+
+  .form {
+    height: 83%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .buttons {
+    justify-content: flex-end;
+    height: 16%;
+
+    .save-button {
+      height: var(--button-height);
+      background-color: var(--turquoise);
+      color: white;
+    }
+
+    .cancel-button {
+      height: var(--button-height);
+      background-color: transparent;
+      color: var(--turquoise);
+    }
+  }
+}
+
+.form-field {
+  width: 100%;
+}
+
+.form-input {
+  padding: 7px;
+  width: 100%;
+  border: 1px solid var(--gray);
+  padding-right: 60px;
+
+  &::placeholder {
+    font-weight: 400;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.textarea,
+.select {
+  font-weight: 400;
+}
+
+.input {
+  font-size: 14px;
+
+  &::placeholder {
+    font-size: 18px;
+  }
+}
+
+.textarea {
+  height: 13vh;
+}
+
+.option {
+  font-weight: 400;
+}
+
+.label {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.form-input-wrap {
+  width: 100%;
+  position: relative;
+
+  .input-symbols {
+    position: absolute;
+    right: 15px;
+    bottom: 7px;
+    color: var(--gray);
+    font-size: 14px;
+  }
+}
+
+.custom-select {
+  width: 100%;
+  border: 1px solid var(--gray);
+  height: 4vw;
+}
+
+.red-border {
+  border: 1px solid red;
+}

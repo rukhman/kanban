@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="head flex-centred" [ngStyle]="{'background-color': color}">
+    <mat-icon title="Удалить" (click)="delete()" *ngIf="status === 'new'"
+      class="icon delete-icon flex-centred">delete</mat-icon>
+    <mat-icon title="Редактировать" (click)="edit()" *ngIf="status === 'new' || status === 'process'"
+      class="icon edit-icon flex-centred">edit</mat-icon>
+    <mat-icon title="Просмотр" (click)="watch()" *ngIf="status === 'done'"
+      class="icon view-icon flex-centred">remove_red_eye</mat-icon>
+  </div>
+  <div class="body">
+    <div class="title" [title]="task?.name">{{task?.name}}</div>
+    <div class="description" [title]="task?.description">
+      {{task?.description}}
+    </div>
+  </div>
+</div>

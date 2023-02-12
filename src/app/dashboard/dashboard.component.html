@@ -1,0 +1,56 @@
+<div class="dashboard">
+  <div class="control-panel">
+    <button class="add-button" (click)="createTask()" extended mat-fab>
+      <mat-icon class="add-icon">add</mat-icon>
+      Создать задачу
+    </button>
+  </div>
+  <div class="header">
+    <ul class="header-row">
+      <li class="cell yellow">
+        Новые
+      </li>
+      <li class="cell red">
+        Выполняются
+      </li>
+      <li class="cell green">
+        Готово
+      </li>
+    </ul>
+  </div>
+  <div class="body">
+    <ul class="body-columns" cdkDropListGroup>
+      <li class="column">
+        <ng-scrollbar>
+          <div class="list-wrap" (cdkDropListDropped)="drop($event, 1)" cdkDropList
+            [cdkDropListData]="dashboardService.lists.new">
+            <div (mousedown)="previousStatus = 1" *ngFor="let item of dashboardService.lists.new" class="card" cdkDrag>
+              <app-card [task]="item" status="new"></app-card>
+            </div>
+          </div>
+        </ng-scrollbar>
+      </li>
+      <li class="column">
+        <ng-scrollbar>
+          <div class="list-wrap" (cdkDropListDropped)="drop($event, 2)" cdkDropList
+            [cdkDropListData]="dashboardService.lists.process">
+            <div (mousedown)="previousStatus = 2" *ngFor="let item of dashboardService.lists.process" class="card"
+              cdkDrag>
+              <app-card [task]="item" status="process"></app-card>
+            </div>
+          </div>
+        </ng-scrollbar>
+      </li>
+      <li class="column">
+        <ng-scrollbar>
+          <div class="list-wrap" (cdkDropListDropped)="drop($event, 3)" cdkDropList
+            [cdkDropListData]="dashboardService.lists.done">
+            <div (mousedown)="previousStatus = 3" *ngFor="let item of dashboardService.lists.done" class="card" cdkDrag>
+              <app-card [task]="item" status="done"></app-card>
+            </div>
+          </div>
+        </ng-scrollbar>
+      </li>
+    </ul>
+  </div>
+</div>

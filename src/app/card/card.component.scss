@@ -1,0 +1,59 @@
+:host {
+  * {
+    font-size: 14px;
+  }
+
+  display: block;
+  min-height: 30px;
+  background-color: white;
+  border-radius: 4px;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 0 7px rgba(192, 189, 189, 0.25), 0 10px 10px rgba(170, 167, 167, 0.22);
+  }
+}
+
+.card {
+  .head {
+    justify-content: flex-end;
+    background-color: var(--yellow)
+  }
+
+  .body {
+    padding: 7px;
+    height: 125px;
+
+    .title {
+      margin-bottom: 7px;
+      width: 100px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .description {
+      font-weight: 400;
+      word-wrap: break-word;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.icon {
+  display: flex !important;
+  cursor: pointer;
+  transition: transform .3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1, 1.1)
+  }
+}
+
+.delete-icon {
+  margin-right: auto;
+}
