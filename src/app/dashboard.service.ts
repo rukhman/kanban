@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { StorageMap } from '@ngx-pwa/local-storage';
 import { Status, Task, TaskLists } from './types';
 @Injectable()
 export class DashboardService {
@@ -9,8 +10,9 @@ export class DashboardService {
   };
 
   initApp(): void {
-    this.lists =
-      JSON.parse(<string>localStorage.getItem('lists')) || this.lists;
+    this.storage.get('board').subscribe((state: any) => {
+      this.lists = state || this.lists;
+    });
   }
 
   addTask(status: Status, task: Task): void {
@@ -23,7 +25,7 @@ export class DashboardService {
   }
 
   saveState(): void {
-    localStorage.setItem('lists', JSON.stringify(this.lists));
+    this.storage.set('board', this.lists).subscribe(() => {});
   }
 
   deleteFromState(status: Status, task: Task): void {
@@ -67,5 +69,5 @@ export class DashboardService {
     });
   }
 
-  constructor() {}
+  constructor(private storage: StorageMap) {}
 }

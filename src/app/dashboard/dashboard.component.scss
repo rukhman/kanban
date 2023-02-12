@@ -95,11 +95,8 @@
 
         .card {
           margin-bottom: 6px;
-          width: 48%;
-
-          &:nth-child(odd) {
-            margin-right: 6px;
-          }
+          width: 9rem;
+          margin-right: 6px;
         }
       }
     }
@@ -112,11 +109,8 @@
 
 .card {
   margin-bottom: 6px;
-  width: 48%;
-
-  &:nth-child(odd) {
-    margin-right: 6px;
-  }
+  width: 9rem;
+  margin-right: 6px;
 }
 
 :host ::ng-deep {
