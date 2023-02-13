@@ -122,8 +122,17 @@
 
 .custom-select {
   width: 100%;
-  border: 1px solid var(--gray);
-  height: 4vw;
+
+  &.custom {
+    border: 0px;
+    min-height: 0px;
+    border-radius: 0;
+  }
+
+  &.custom .ng-select-container {
+    min-height: 0px;
+    border-radius: 0;
+  }
 }
 
 .red-border {

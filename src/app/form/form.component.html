@@ -32,11 +32,12 @@
       <label class="label" for="status">
         Состояние задачи
       </label>
-      <select class="custom-select select" formControlName="status" id="status">
-        <option [disabled]="task?.status === 'process'" class="option" value="new">Новая</option>
-        <option [disabled]="mode === 'create'" class="option" value="process">Выполняется</option>
-        <option [disabled]="task?.status === 'new' || mode === 'create'" class="option" value="done">Готово</option>
-      </select>
+      <ng-select [virtualScroll]="true" [clearable]="false" formControlName="status" id="status"
+        class="custom-select select">
+        <ng-option *ngIf="!(task?.status === 'process')" class="option" value="new">Новая</ng-option>
+        <ng-option *ngIf="!(mode === 'create')" class="option" value="process">Выполняется</ng-option>
+        <ng-option *ngIf="!(task?.status === 'new' || mode === 'create')" class="option" value="done">Готово</ng-option>
+      </ng-select>
     </form>
     <div class="buttons flex-centred" *ngIf="mode==='create' || mode==='edit'">
       <button class="cancel-button" (click)="cancel()" extended mat-fab>

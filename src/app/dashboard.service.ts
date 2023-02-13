@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { Status, Task, TaskLists } from './types';
+import { Observable, of } from 'rxjs';
+import { Status, Task, TaskLists, WorkerMessage } from './types';
 @Injectable()
 export class DashboardService {
   lists: TaskLists = {
@@ -67,6 +68,18 @@ export class DashboardService {
         }));
       }
     });
+  }
+
+  input$: Observable<string> = of('hello jvjvr');
+  workerFn(method: 'get' | 'post' = 'get', data?: TaskLists): void {
+    if (typeof Worker !== 'undefined') {
+      const worker = new Worker(new URL('./app.worker', import.meta.url));
+      worker.onmessage = ({ data }) => {};
+      const message: WorkerMessage = { method, data };
+      worker.postMessage(message);
+    } else {
+      console.log('Web Workers не поддерживаются в данном окружении');
+    }
   }
 
   constructor(private storage: StorageMap) {}

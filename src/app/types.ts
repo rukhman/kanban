@@ -18,3 +18,8 @@ export interface TransferFormData {
   mode: Mode;
   task: Task;
 }
+
+export interface WorkerMessage {
+  method: 'get' | 'post';
+  data?: TaskLists;
+}

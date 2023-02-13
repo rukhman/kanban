@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DashboardService } from '../dashboard.service';
-import { Mode, Status, Task, TransferFormData } from '../types';
+import { Mode, Task, TransferFormData } from '../types';
 
 @Component({
   selector: 'app-form',

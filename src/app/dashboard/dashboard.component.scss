@@ -84,7 +84,7 @@
     .column {
       align-items: flex-start;
       height: 100%;
-      padding: 6px;
+      padding: 6px 15px 6px 15px;
 
       .column-ul {
         @include flex;
@@ -93,11 +93,11 @@
         flex-wrap: wrap;
         align-items: flex-start;
 
-        .card {
-          margin-bottom: 6px;
-          width: 9rem;
-          margin-right: 6px;
-        }
+        // .card {
+        //   margin-bottom: 6px;
+        //   width: 9rem;
+        //   margin-right: 6px;
+        // }
       }
     }
 
@@ -108,9 +108,14 @@
 }
 
 .card {
-  margin-bottom: 6px;
+  margin-bottom: 15px;
   width: 9rem;
-  margin-right: 6px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.card:nth-child(odd) {
+  margin-right: auto;
 }
 
 :host ::ng-deep {
