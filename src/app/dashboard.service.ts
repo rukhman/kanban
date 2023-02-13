@@ -11,9 +11,8 @@ export class DashboardService {
   };
 
   initApp(): void {
-    this.storage.get('board').subscribe((state: any) => {
-      this.lists = state || this.lists;
-    });
+    this.lists =
+      JSON.parse(<string>localStorage.getItem('lists')) || this.lists;
   }
 
   addTask(status: Status, task: Task): void {
@@ -26,7 +25,7 @@ export class DashboardService {
   }
 
   saveState(): void {
-    this.storage.set('board', this.lists).subscribe(() => {});
+    localStorage.setItem('lists', JSON.stringify(this.lists));
   }
 
   deleteFromState(status: Status, task: Task): void {
